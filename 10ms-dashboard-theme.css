@@ -79,3 +79,64 @@ input:focus, select:focus, textarea:focus {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Studio polish */
+body {
+  background:
+    radial-gradient(circle at 0 0, rgba(58, 180, 94, .10), transparent 27rem),
+    radial-gradient(circle at 100% 15%, rgba(241, 181, 48, .10), transparent 25rem),
+    #f8faf9;
+}
+.hero { padding: 8px 2px 18px; }
+.hero h1 {
+  background: linear-gradient(110deg, #1e293b 20%, #278e48 82%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.card { position: relative; overflow: hidden; }
+.card::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 4px;
+  background: linear-gradient(#2dab50, #94d7a5); opacity: 0; transition: opacity .25s ease;
+}
+.card:hover::before { opacity: 1; }
+.card h2::after {
+  content: ""; display: block; width: 34px; height: 3px; margin-top: 8px; border-radius: 10px;
+  background: linear-gradient(90deg, #2dab50, #b9e5c3);
+}
+
+.f label, .field > b { color: #344054; letter-spacing: .01em; }
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #28a54a 50%), linear-gradient(135deg, #28a54a 50%, transparent 50%);
+  background-position: calc(100% - 18px) 51%, calc(100% - 13px) 51%;
+  background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 38px;
+}
+select:focus { transform: translateY(-1px); }
+input:focus, textarea:focus { animation: fieldGlow .8s ease; }
+.search-results {
+  border-color: #b9dfc2; box-shadow: 0 16px 34px rgba(25, 99, 47, .16);
+  animation: popIn .18s cubic-bezier(.2,.85,.35,1);
+}
+.option { position: relative; }
+.option::after { content: "→"; position: absolute; right: 13px; opacity: 0; color: #229343; transition: .18s ease; }
+.option:hover::after { opacity: 1; transform: translateX(2px); }
+.chips .chip {
+  border: 1px solid #cfead5; box-shadow: 0 3px 8px rgba(29, 137, 59, .08);
+  animation: chipIn .25s cubic-bezier(.2,.9,.4,1);
+}
+.chips .chip button { font-size: 15px; line-height: 10px; }
+.preview-head {
+  background: linear-gradient(100deg, #f5fbf6, #eef8f1);
+}
+.question { transition: background .2s ease, transform .2s ease; }
+.question:hover { background: #fcfffc; transform: translateX(3px); }
+.opt.correct {
+  box-shadow: inset 3px 0 #2dab50; border-color: #b6e2c1;
+}
+.footerbar button {
+  background: linear-gradient(135deg, #20a448, #43ba62);
+}
+.footerbar button::after { content: " ✦"; }
+
+@keyframes popIn { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes chipIn { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: scale(1); } }
+@keyframes fieldGlow { 50% { box-shadow: 0 0 0 5px rgba(48, 172, 80, .08); } }
